@@ -1,4 +1,10 @@
-<div class="criteria-element-container">
-  {{criteria.name}}: {{criteria.value}}
+<div (click)="inEditMode=true" class="criteria-element-container">
+  <span>{{criteria.name}}: </span>
+  <span *ngIf="!inEditMode">{{criteria.value}}</span>
+  <input *ngIf="inEditMode"
+         class="criteria-element-input text"
+         value="{{criteria.value}}" type="text"
+         (focusout)="inEditMode = false"
+         (keyup.enter)="inEditMode = false" appAutoFocus
+         [(ngModel)]="criteria.value">
 </div>
-

@@ -11,6 +11,8 @@ export class CriteriaElementComponent implements OnInit {
   @Input() criteria: Criteria;
   @Input() allCriteria: Criteria[];
 
+  inEditMode = false;
+
   constructor() {
   }
 
