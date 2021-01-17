@@ -1,0 +1,25 @@
+<div class="page-container text">
+  <div class="welcome-text">
+    Welcome to the software recommendation system!
+  </div>
+
+  <div class="search-bar-container">
+    <div class="search-bar-content">
+      <div class="search-bar-text">
+        <div *ngIf="noCriteriaExist" class="label-text-search">
+          Search using search criteria
+        </div>
+        <div class="criteria-container" *ngIf="!noCriteriaExist">
+          <div class="criteria-parser" *ngFor="let criteria of criteria">
+            <div class="criteria-element-container">
+                {{criteria.name}}: {{criteria.value}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="search-button">
+      <div class="search-button-content">Search</div>
+    </div>
+  </div>
+</div>
