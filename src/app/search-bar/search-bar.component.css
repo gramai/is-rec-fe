@@ -67,17 +67,6 @@
   overflow: auto;
 }
 
-.criteria-element-container {
-  display: inline-block;
-  border: 2px solid darkgray;
-  background-color: lightgrey;
-  border-radius: 10px;
-  line-height: 30px;
-  margin: 5px 3px 3px;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
 
 ::-webkit-scrollbar {
   width: 6px; /* width of the entire scrollbar */

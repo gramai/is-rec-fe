@@ -15,7 +15,7 @@ export class SearchBarComponent implements OnInit {
   noCriteriaExist = false;
   // criteria: Criteria[];
 
-  criteria: Criteria[] = [
+  allCriteria: Criteria[] = [
     {
       name: 'Area',
       value: 'Software Engineering'

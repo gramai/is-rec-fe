@@ -10,10 +10,11 @@
           Search using search criteria
         </div>
         <div class="criteria-container" *ngIf="!noCriteriaExist">
-          <div class="criteria-parser" *ngFor="let criteria of criteria">
-            <div class="criteria-element-container">
-                {{criteria.name}}: {{criteria.value}}
-            </div>
+          <div class="criteria-parser" *ngFor="let criteria of allCriteria">
+            <app-criteria-element
+              [criteria]="criteria"
+              [allCriteria]="allCriteria">
+            </app-criteria-element>
           </div>
         </div>
       </div>
