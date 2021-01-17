@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {RecommendationsService} from '../service/recommendations/recommendations.service';
 
 export interface Criteria {
   name: string;
@@ -37,92 +38,31 @@ export class SearchBarComponent implements OnInit {
     }
   ];
 
-  // TODO: get criteria names from service
   criteriaNames: string[] = [
     'Area',
     'Type',
-    'Programming Language'
+    'Programming Language',
+    'Name'
   ];
 
-  matches: Match[] = [
-    {
-      name: 'Intellij Idea',
-      description: 'Intellij Idea DescriptionDescriptionDescription',
-      url: 'https://www.google.com'
-    },
-    {
-      name: 'Netbeans',
-      description: 'Netbeans description',
-      url: 'https://www.facebook.com'
-    },
-    {
-      name: 'Netbeans',
-      description: 'Netbeans description',
-      url: 'https://www.facebook.com'
-    },
-    {
-      name: 'Netbeans',
-      description: 'Netbeans description',
-      url: 'https://www.facebook.com'
-    },
-    {
-      name: 'Netbeans',
-      description: 'Netbeans description',
-      url: 'https://www.facebook.com'
-    },
-    {
-      name: 'Netbeans',
-      description: 'Netbeans description',
-      url: 'https://www.facebook.com'
-    },
-    {
-      name: 'Netbeans',
-      description: 'Netbeans description',
-      url: 'https://www.facebook.com'
-    },
-    {
-      name: 'Netbeans',
-      description: 'Netbeans description',
-      url: 'https://www.facebook.com'
-    },
-    {
-      name: 'Netbeans',
-      description: 'Netbeans description',
-      url: 'https://www.facebook.com'
-    },
-    {
-      name: 'Netbeans',
-      description: 'Netbeans description',
-      url: 'https://www.facebook.com'
-    },
-    {
-      name: 'Netbeans',
-      description: 'Netbeans description',
-      url: 'https://www.facebook.com'
-    },
-    {
-      name: 'Netbeans',
-      description: 'Netbeans description',
-      url: 'https://www.facebook.com'
-    },
-    {
-      name: 'Netbeans',
-      description: 'Netbeans description',
-      url: 'https://www.facebook.com'
-    },
-    {
-      name: 'Netbeans',
-      description: 'Netbeans description',
-      url: 'https://www.facebook.com'
-    }
-  ];
+  matches: Match[];
 
   inNewFilterMode = false;
 
-  constructor() {
+  constructor(private recommendationsService: RecommendationsService) {
   }
 
   ngOnInit(): void {
+    this.recommendationsService.getRecommendations(null, null, null, null)
+      .subscribe((data) => {
+        this.matches = data;
+      });
   }
 
+  refreshMatches(): void {
+    this.recommendationsService.getRecommendations(null, null, null, null)
+      .subscribe((data) => {
+        this.matches = data;
+      });
+  }
 }
