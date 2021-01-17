@@ -4,7 +4,7 @@
   <input *ngIf="inEditMode"
          class="criteria-element-input text"
          value="{{criteria.value}}" type="text"
-         (focusout)="inEditMode = false"
-         (keyup.enter)="inEditMode = false" appAutoFocus
+         (focusout)="notEditableAndSave()"
+         (keyup.enter)="notEditableAndSave()" appAutoFocus
          [(ngModel)]="criteria.value">
 </div>

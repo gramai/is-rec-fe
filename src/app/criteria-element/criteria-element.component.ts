@@ -19,4 +19,10 @@ export class CriteriaElementComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  notEditableAndSave(newValue?: any): void {
+    this.inEditMode = false;
+    if (!newValue || newValue.length === 0) {
+      //TODO: Remove criteria if empty
+    }
+  }
 }
