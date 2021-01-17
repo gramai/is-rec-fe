@@ -16,6 +16,9 @@
               [allCriteria]="allCriteria">
             </app-criteria-element>
           </div>
+          <div class="criteria-element-container" (click)="allCriteria.push({name: 'filter-name', value: 'value'})">
+            + Add Filter
+          </div>
         </div>
       </div>
     </div>
