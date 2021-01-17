@@ -52,6 +52,7 @@ export class CriteriaElementComponent implements OnInit {
     if (foundCriteria) {
       this.allCriteria.splice(criteriaIndexToRemove, 1);
     }
+    this.searchBarComponent.refreshMatches();
   }
 
   updateFilterName(event): void {
