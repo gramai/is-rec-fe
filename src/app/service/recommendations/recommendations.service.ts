@@ -15,16 +15,19 @@ export class RecommendationsService {
 
   getRecommendations(name: string, type: string, programmingLanguage: string, area: string): Observable<any[]> {
     if (name == null) {
-      name = '%';
+      name = '';
     }
     if (type == null) {
-      type = '%';
+      type = '';
     }
     if (programmingLanguage == null) {
-      programmingLanguage = '%';
+      programmingLanguage = '';
     }
     if (area == null) {
-      area = '%';
+      area = '';
+    }
+    if (name === '' && type === '' && programmingLanguage === '' && area === '') {
+      area = '';
     }
     const url = this.recommendationsBasePath + '/recommendation'
       + '?name=' + name

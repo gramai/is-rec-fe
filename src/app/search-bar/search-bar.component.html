@@ -6,10 +6,10 @@
   <div class="search-bar-container standard-container-width">
     <div class="search-bar-content">
       <div class="search-bar-text">
-        <div *ngIf="noCriteriaExist" class="label-text-search">
+        <div *ngIf="!this.allCriteria" class="label-text-search">
           Search using search criteria
         </div>
-        <div class="criteria-container" *ngIf="!noCriteriaExist">
+        <div class="criteria-container" *ngIf="this.allCriteria">
           <div class="criteria-parser" *ngFor="let criteria of allCriteria">
             <app-criteria-element
               [criteria]="criteria"
@@ -23,7 +23,7 @@
             <app-criteria-element
               [criteria]="{name: 'new-filter', value: 'new-value'}"
               [(allCriteria)]="this.allCriteria"
-              [newFilterMode]="true"
+              [(newFilterMode)]="inNewFilterMode"
               [criteriaNames]="this.criteriaNames">
             </app-criteria-element>
           </div>
@@ -48,7 +48,7 @@
     </div>
     <hr class="separator">
     <div class="matches-content-container">
-      <div *ngFor="let match of matches">
+      <div *ngFor="let match of this.matches">
         <div class="standard-container match-content-container">
           <div class="header-container match-align-vertical">
             <div class="header-element match-element" style="flex: 1 40%; margin-left: -70px;">

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Criteria} from '../search-bar/search-bar.component';
+import {Criteria, SearchBarComponent} from '../search-bar/search-bar.component';
 
 @Component({
   selector: 'app-criteria-element',
@@ -15,11 +15,12 @@ export class CriteriaElementComponent implements OnInit {
   @Output() allCriteriaChange = new EventEmitter<Criteria[]>();
 
   @Input() newFilterMode = false;
+  @Output() newFilterModeChange = new EventEmitter<boolean>();
 
   inEditMode = false;
   nameInEditMode = false;
 
-  constructor() {
+  constructor(private searchBarComponent: SearchBarComponent) {
   }
 
   ngOnInit(): void {
@@ -57,6 +58,12 @@ export class CriteriaElementComponent implements OnInit {
     this.criteria.name = event.target.value;
     this.criteriaChange.emit(this.criteria);
     this.allCriteria.push(this.criteria);
+
     this.newFilterMode = false;
+    this.newFilterModeChange.emit(this.newFilterMode);
+  }
+
+  refreshMatches(): void {
+    this.searchBarComponent.refreshMatches();
   }
 }

@@ -1,5 +1,5 @@
 <div class="standard-container clickable">
-  <div *ngIf="!newFilterMode">
+  <div *ngIf="!newFilterMode" (input)="refreshMatches()">
     <span>{{criteria.name}}: </span>
     <span (click)="inEditMode=true" *ngIf="!inEditMode">{{criteria.value}}</span>
     <span *ngIf="inEditMode">

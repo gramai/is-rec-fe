@@ -12,6 +12,13 @@ export interface Match {
   url: string;
 }
 
+export enum CriteriaNames {
+  'Area' = 'Area',
+  'Type' = 'Type',
+  'Programming Language' = 'Programming Language',
+  'Name' = 'Name'
+}
+
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
@@ -19,30 +26,29 @@ export interface Match {
 })
 export class SearchBarComponent implements OnInit {
 
-  noCriteriaExist = false;
-  // criteria: Criteria[];
-
   // TODO: get criteria from service
-  allCriteria: Criteria[] = [
-    {
-      name: 'Area',
-      value: 'Software Engineering'
-    },
-    {
-      name: 'Type',
-      value: 'IDE'
-    },
-    {
-      name: 'Programming Language',
-      value: 'Java'
-    }
-  ];
+  // allCriteria: Criteria[] = [
+  //   {
+  //     name: 'Area',
+  //     value: 'Software Engineering'
+  //   },
+  //   {
+  //     name: 'Type',
+  //     value: 'IDE'
+  //   },
+  //   {
+  //     name: 'Programming Language',
+  //     value: 'Java'
+  //   }
+  // ];
+
+  allCriteria: Criteria[] = [];
 
   criteriaNames: string[] = [
-    'Area',
-    'Type',
-    'Programming Language',
-    'Name'
+    CriteriaNames.Area,
+    CriteriaNames.Type,
+    CriteriaNames['Programming Language'],
+    CriteriaNames.Name
   ];
 
   matches: Match[];
@@ -60,9 +66,33 @@ export class SearchBarComponent implements OnInit {
   }
 
   refreshMatches(): void {
-    this.recommendationsService.getRecommendations(null, null, null, null)
+    let name = '';
+    let type = '';
+    let programmingLanguage = '';
+    let area = '';
+
+    for (const crit of this.allCriteria) {
+      if (crit.name === CriteriaNames.Name) {
+        name = crit.value;
+      }
+      if (crit.name === CriteriaNames.Type) {
+        type = crit.value;
+      }
+      if (crit.name === CriteriaNames['Programming Language']) {
+        programmingLanguage = crit.value;
+      }
+      if (crit.name === CriteriaNames.Area) {
+        area = crit.value;
+      }
+    }
+
+    this.recommendationsService.getRecommendations(name, type, programmingLanguage, area)
       .subscribe((data) => {
         this.matches = data;
+        console.log('Mathces inside are: ');
+        console.log(this.matches);
       });
+    console.log('Mathces are: ');
+    console.log(this.matches);
   }
 }
