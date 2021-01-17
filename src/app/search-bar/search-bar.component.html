@@ -3,7 +3,7 @@
     Welcome to the software recommendation system!
   </div>
 
-  <div class="search-bar-container">
+  <div class="search-bar-container standard-container-width">
     <div class="search-bar-content">
       <div class="search-bar-text">
         <div *ngIf="noCriteriaExist" class="label-text-search">
@@ -16,7 +16,7 @@
               [(allCriteria)]="allCriteria">
             </app-criteria-element>
           </div>
-          <div class="criteria-element-container clickable" (click)="inNewFilterMode=true">
+          <div class="standard-container clickable" (click)="inNewFilterMode=true">
             + Add Filter
           </div>
           <div *ngIf="inNewFilterMode">
@@ -32,6 +32,39 @@
     </div>
     <div class="search-button">
       <div class="search-button-content">Search</div>
+    </div>
+  </div>
+  <div class="matches-container standard-container-width match-content-container">
+    <div class="header-container">
+      <div class="header-element" style="flex: 1 40%; margin-left: -100px;">
+        Name
+      </div>
+      <div class="header-element" style="flex: 2 40%">
+        Description
+      </div>
+      <div class="header-element" style="flex: 1 20%">
+        Link
+      </div>
+    </div>
+    <hr class="separator">
+    <div class="matches-content-container">
+      <div *ngFor="let match of matches">
+        <div class="standard-container match-content-container">
+          <div class="header-container match-align-vertical">
+            <div class="header-element match-element" style="flex: 1 40%; margin-left: -70px;">
+              {{match.name}}
+            </div>
+            <div class="header-element match-element" style="flex: 2 40%">
+              {{match.description}}
+            </div>
+            <div class="header-element match-element" style="flex: 1 20%">
+              <a class="href-style" href="{{match.url}}">
+                <span class="delete-criteria-button clickable">↯</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -2,7 +2,11 @@
   font-family: Cambria, serif;
 }
 
-.criteria-element-container {
+.standard-container-width {
+  width: 650px;
+}
+
+.standard-container {
   display: inline-block;
   border: 2px solid darkgray;
   background-color: lightgrey;
@@ -15,4 +19,22 @@
 
 .clickable {
   cursor: pointer;
+}
+
+.href-style {
+  color: dimgrey;
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 6px; /* width of the entire scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: black; /* color of the tracking area */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #D7D7D7; /* color of the scroll thumb */
+  border: 1px solid #D7D7D7; /* creates padding around scroll thumb */
 }

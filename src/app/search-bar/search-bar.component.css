@@ -12,8 +12,6 @@
 }
 
 .search-bar-container {
-  display: flex;
-  width: 650px;
   height: 50px;
   border: 3px solid black;
   border-radius: 20px;
@@ -63,15 +61,44 @@
   overflow: auto;
 }
 
-::-webkit-scrollbar {
-  width: 6px; /* width of the entire scrollbar */
+.matches-container {
+  border: 2px solid black;
+  border-radius: 20px;
+  margin-top: 20px;
 }
 
-::-webkit-scrollbar-track {
-  background: black; /* color of the tracking area */
+.header-container {
+  display: flex;
 }
 
-::-webkit-scrollbar-thumb {
-  background-color: #D7D7D7; /* color of the scroll thumb */
-  border: 1px solid #D7D7D7; /* creates padding around scroll thumb */
+.match-align-vertical {
+  margin-top: -10px;
+}
+
+.header-element {
+  display: inline;
+  font-size: 20px;
+  margin-top: 10px
+}
+
+.separator {
+  border: 1px solid transparent;
+  border-bottom-color: black;
+}
+
+.matches-content-container {
+  overflow: auto;
+  min-height: 100px;
+  max-height: 200px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.match-content-container{
+  overflow: hidden;
+  width: 95%;
+}
+
+.match-element {
+  height: 30px;
 }
