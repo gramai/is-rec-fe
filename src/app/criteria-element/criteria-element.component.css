@@ -20,3 +20,20 @@
   border-radius: 4px;
   background-color: white;
 }
+
+.select-container {
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 50px;
+}
+
+
+.select-properties {
+  font-size: 20px;
+  appearance: none; /* Remove default arrow */
+  outline: none;
+  border: none;
+  background: none;
+}

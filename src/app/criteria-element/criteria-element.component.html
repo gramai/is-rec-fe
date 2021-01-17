@@ -1,12 +1,36 @@
-<div (click)="inEditMode=true" class="criteria-element-container clickable">
-  <span>{{criteria.name}}: </span>
-  <span *ngIf="!inEditMode">{{criteria.value}}</span>
-  <span *ngIf="inEditMode">
+<div class="criteria-element-container clickable">
+  <div *ngIf="!newFilterMode">
+    <span>{{criteria.name}}: </span>
+    <span (click)="inEditMode=true" *ngIf="!inEditMode">{{criteria.value}}</span>
+    <span *ngIf="inEditMode">
     <input #inputId class="criteria-element-input text"
            value="{{criteria.value}}" type="text"
            (focusout)="notEditableAndSave(inputId.value)"
            (keyup.enter)="notEditableAndSave(inputId.value)" appAutoFocus
            [(ngModel)]="criteria.value">
   </span>
-  <span class="delete-criteria-button clickable" (click)="deleteCriteria()">X</span>
+    <span class="delete-criteria-button clickable" (click)="deleteCriteria()">X</span>
+  </div>
+  <div *ngIf="newFilterMode">
+    <span class="select-container">
+    <label>
+      <select class="select-properties clickable text"
+              (change)="updateFilterName($event)">
+        <option *ngFor="let criteriaName of criteriaNames"
+                [selected]="criteriaName=== (this.criteria.name)">
+          {{criteriaName}}
+        </option>
+      </select>
+    </label>
+    </span>
+    <span (click)="inEditMode=true" *ngIf="!inEditMode">: {{criteria.value}}</span>
+    <span *ngIf="inEditMode">
+    <input #inputId class="criteria-element-input text"
+           value="{{criteria.value}}" type="text"
+           (focusout)="notEditableAndSave(inputId.value)"
+           (keyup.enter)="notEditableAndSave(inputId.value)" appAutoFocus
+           [(ngModel)]="criteria.value">
+  </span>
+    <span class="delete-criteria-button clickable" (click)="deleteCriteria()">X</span>
+  </div>
 </div>

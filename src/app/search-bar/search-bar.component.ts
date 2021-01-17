@@ -30,6 +30,15 @@ export class SearchBarComponent implements OnInit {
     }
   ];
 
+
+  criteriaNames: string[] = [
+    'Area',
+    'Type',
+    'Programming Language'
+  ];
+
+  inNewFilterMode = false;
+
   constructor() {
   }
 

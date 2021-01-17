@@ -9,10 +9,15 @@ import {Criteria} from '../search-bar/search-bar.component';
 export class CriteriaElementComponent implements OnInit {
 
   @Input() criteria: Criteria;
+  @Output() criteriaChange = new EventEmitter<Criteria>();
   @Input() allCriteria: Criteria[];
+  @Input() criteriaNames: string[];
   @Output() allCriteriaChange = new EventEmitter<Criteria[]>();
 
+  @Input() newFilterMode = false;
+
   inEditMode = false;
+  nameInEditMode = false;
 
   constructor() {
   }
@@ -25,6 +30,7 @@ export class CriteriaElementComponent implements OnInit {
     if (!newValue || newValue.length === 0) {
       this.deleteCriteria();
     }
+    this.criteriaChange.emit(this.criteria);
   }
 
   deleteCriteria(): void {
@@ -45,5 +51,12 @@ export class CriteriaElementComponent implements OnInit {
     if (foundCriteria) {
       this.allCriteria.splice(criteriaIndexToRemove, 1);
     }
+  }
+
+  updateFilterName(event): void {
+    this.criteria.name = event.target.value;
+    this.criteriaChange.emit(this.criteria);
+    this.allCriteria.push(this.criteria);
+    this.newFilterMode = false;
   }
 }

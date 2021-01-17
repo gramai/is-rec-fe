@@ -16,8 +16,16 @@
               [(allCriteria)]="allCriteria">
             </app-criteria-element>
           </div>
-          <div class="criteria-element-container" (click)="allCriteria.push({name: 'filter-name', value: 'value'})">
+          <div class="criteria-element-container clickable" (click)="inNewFilterMode=true">
             + Add Filter
+          </div>
+          <div *ngIf="inNewFilterMode">
+            <app-criteria-element
+              [criteria]="{name: 'new-filter', value: 'new-value'}"
+              [(allCriteria)]="this.allCriteria"
+              [newFilterMode]="true"
+              [criteriaNames]="this.criteriaNames">
+            </app-criteria-element>
           </div>
         </div>
       </div>
