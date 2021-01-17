@@ -4,9 +4,9 @@
   <span *ngIf="inEditMode">
     <input #inputId class="criteria-element-input text"
            value="{{criteria.value}}" type="text"
-           (focusout)="notEditableAndSave()"
+           (focusout)="notEditableAndSave(inputId.value)"
            (keyup.enter)="notEditableAndSave(inputId.value)" appAutoFocus
            [(ngModel)]="criteria.value">
-    <span class="delete-criteria-button clickable" (click)="deleteCriteria()">X</span>
   </span>
+  <span class="delete-criteria-button clickable" (click)="deleteCriteria()">X</span>
 </div>

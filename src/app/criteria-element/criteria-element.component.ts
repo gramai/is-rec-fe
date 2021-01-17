@@ -30,8 +30,13 @@ export class CriteriaElementComponent implements OnInit {
   deleteCriteria(): void {
     let foundCriteria = false;
     let criteriaIndexToRemove = 0;
+    console.log('Trying to delete criteria!');
     for (let i = 0; i < this.allCriteria.length; i++) {
+      console.log('Parsing criteria');
+      console.log(this.allCriteria[i]);
       if (this.allCriteria[i].name === this.criteria.name) {
+        console.log('Matched criteria!');
+        console.log(this.allCriteria[i]);
         foundCriteria = true;
         criteriaIndexToRemove = i;
         break;
